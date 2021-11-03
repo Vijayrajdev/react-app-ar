@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function User(props) {
+const User = (props) => {
+  // Value
+  // The function to update the state
+  const [planet, setPlanet] = useState("Earth");
+
+  // Component Did Mount
+  useEffect(() => {
+    console.log("Component Mounting");
+  }, []);
+
+  // component did update
+  useEffect(() => {
+    console.log("planet changes");
+  }, [planet]);
+
+  console.log(planet);
+
   return (
     <div>
       <h2>{props.name}</h2>
       <p>{props.description}</p>
+      <button onClick={() => setPlanet("Pluto")}>Change Planet!!</button>
+      <h4>{planet}</h4>
     </div>
   );
-}
+};
 
 export default User;
-
-
-
 
 //* Class components
 
